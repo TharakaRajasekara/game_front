@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snack Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #snack {
+      width: 30px;
+      height: 30px;
+      background-color: green;
+      position: absolute;
+    }
+
+    #snack-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <div id="snack-container">
+    <div id="snack"></div>
+  </div>
+
+  <script>
+    const container = document.getElementById('snack-container');
+    const snack = document.getElementById('snack');
+
+    let x = 0;
+    let y = 0;
+    let dx = 1;
+    let dy = 1;
+    const snackSize = 30;
+    const containerSize = 300;
+
+    function moveSnack() {
+      x += dx;
+      y += dy;
+
+      if (x + snackSize > containerSize || x < 0) {
+        dx *= -1;
+      }
+      if (y + snackSize > containerSize || y < 0) {
+        dy *= -1;
+      }
+
+      snack.style.left = x + 'px';
+      snack.style.top = y + 'px';
+    }
+
+    setInterval(moveSnack, 20);
+  </script>
+</body>
+</html>
